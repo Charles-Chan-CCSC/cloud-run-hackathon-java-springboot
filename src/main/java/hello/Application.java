@@ -187,11 +187,13 @@ public class Application {
 
       if (mystate.inRange(playerState)) {
         return "T";
-      } else {
+      }
+    }
+
         int minDist = 999;
         PlayerState close = null;
         for(PlayerState playerState2 : arenaUpdate.arena.state.values()) {
-          if (playerState.x == mystate.x && playerState.y == mystate.y) {
+          if (playerState2.x == mystate.x && playerState2.y == mystate.y) {
             //this is me
             continue;
           }
