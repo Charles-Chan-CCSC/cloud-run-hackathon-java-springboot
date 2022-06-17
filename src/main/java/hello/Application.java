@@ -49,31 +49,31 @@ public class Application {
     public Integer getScore() {return score;}
 
     public void setScore(Integer score) {this.score = score;}
-/*
+
     public boolean inRange(PlayerState p) {
-      if (self.direction.equals("N")) {
-        if (p.y >= self.y-3 && p.y < self.y && p.x == self.x)
-               return true;
-      } else if (self.direction.equals("S")) {
-        if (p.y <= self.y+3 && p.y > self.y && p.x == self.x)
+      if (this.direction.equals("N")) {
+        if (p.y >= this.y-3 && p.y < this.y && p.x == this.x)
           return true;
-      } else if (self.direction.equals("E")) {
-        if (p.x <= self.x+3 && p.x > self.x && p.y == self.y)
+      } else if (this.direction.equals("S")) {
+        if (p.y <= this.y+3 && p.y > this.y && p.x == this.x)
+          return true;
+      } else if (this.direction.equals("E")) {
+        if (p.x <= this.x+3 && p.x > this.x && p.y == this.y)
           return true;
       } else {
-        if (p.x >= self.x -3 && p.x < self.x && p.y == self.y)
+        if (p.x >= this.x -3 && p.x < this.x && p.y == this.y)
           return true;
       }
       return false;
     }
 
     public int distance(PlayerState p) {
-      int dist =  Math.abs(p.x - self.x) + Math.abs(p.y - self.y);
-      if (!((p.x == self.x) || (p.y == self.y)))
+      int dist =  Math.abs(p.x - this.x) + Math.abs(p.y - this.y);
+      if (!((p.x == this.x) || (p.y == this.y)))
         dist += 1;
       return dist;
     }
-    */
+
   }
 
   static class Arena {
@@ -129,7 +129,7 @@ public class Application {
     System.out.println(jsonObject.getString("rcv"));
     System.out.println(jsonObject.getJSONArray("argv"));
 */
-
+/*
     JSONObject jsonObject = new JSONObject(arenaUpdate);
 
     JSONObject arena = jsonObject.getJSONObject("arena");
@@ -137,19 +137,23 @@ public class Application {
 
     JSONObject state = jsonObject.getJSONObject("state");
     System.out.println(state.toString());
+*/
+
 
     String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app";
     Set<String> playerName = arenaUpdate.arena.state.keySet();
     System.out.println("playername = " + java.util.Arrays.toString(playerName.toArray()));
 
-    JSONObject meJson = jsonObject.getJSONObject(me);
+    //JSONObject meJson = jsonObject.getJSONObject(me);
+/*
+    PlayerState meJson = arenaUpdate.arena.state.get(me);
     int myX = meJson.getInt("x");
     int myY = meJson.getInt("y");
 
     System.out.println("hhhhhhhhhhhhhh");
     System.out.println(myX+"   "+myY);
     System.out.println("hhhhhhhhhhhhhh");
-
+*/
     /*
     String myDirection = arenaUpdate.arena.state.get(me).direction;
     boolean wasHit = arenaUpdate.arena.state.get(me).wasHit;
