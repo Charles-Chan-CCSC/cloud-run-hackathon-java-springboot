@@ -104,7 +104,7 @@ public class Application {
     System.out.println(jsonObject.getJSONArray("argv"));
 */
 
-    JSONObject jsonObject = new JSONObject(arenaUpdate);
+    JSONObject jsonObject = new JSONObject(arenaUpdate.toString());
 
     JSONObject arena = jsonObject.getJSONObject("arena");
     System.out.println(arena.toString());
@@ -126,7 +126,7 @@ public class Application {
     boolean wasHit = arenaUpdate.arena.state.get(me).wasHit;
     int score = arenaUpdate.arena.state.get(me).score;
 */
-    
+
 
     String[] commands = new String[]{"F", "R", "L", "T"};
     int i = new Random().nextInt(4);
