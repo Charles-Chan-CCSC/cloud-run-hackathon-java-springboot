@@ -55,7 +55,6 @@ public class Application {
 
   @PostMapping("/**")
   public String index(@RequestBody ArenaUpdate arenaUpdate) {
-    System.out.println("kkkkkkkk");
 
 
 /*
@@ -78,7 +77,12 @@ public class Application {
     boolean wasHit = arenaUpdate.arena.state.get(me).wasHit;
     int score = arenaUpdate.arena.state.get(me).score;
 
+    System.out.println("111");
+
+    System.out.println(arenaUpdate);
     System.out.println(myX+"   "+myY);
+
+    System.out.println("222");
 
     String[] commands = new String[]{"F", "R", "L", "T"};
     int i = new Random().nextInt(4);
