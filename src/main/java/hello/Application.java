@@ -206,8 +206,7 @@ public class Application {
 
         if (close != null)
           return mystate.chase(close);
-      }
-    }
+
 
     //JSONObject meJson = jsonObject.getJSONObject(me);
 /*
