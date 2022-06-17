@@ -74,6 +74,39 @@ public class Application {
       return dist;
     }
 
+    public String chase(PlayerState p) {
+      if (this.direction.equals("N")) {
+        if (p.y < this.y)
+          return "F";
+        else if (p.x > this.x)
+          return "R";
+        else
+          return "L";
+      } else if (this.direction.equals("S")) {
+        if (p.y > this.y)
+          return "F";
+        else if (p.x > this.x)
+          return "L";
+        else
+          return "R";
+      } else if (this.direction.equals("E")) {
+        if (p.x > this.x)
+          return "F";
+        else if( p.y < this.y)
+          return "L";
+        else
+          return "R";
+      } else {
+        if (p.x < this.x)
+          return "F";
+        else if (p.y < this.y)
+          return "R";
+        else
+          return "L";
+      }
+
+    }
+
   }
 
   static class Arena {
@@ -140,9 +173,39 @@ public class Application {
 */
 
 
-    String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app";
+    String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app/";
     Set<String> playerName = arenaUpdate.arena.state.keySet();
     System.out.println("playername = " + java.util.Arrays.toString(playerName.toArray()));
+
+    PlayerState mystate = arenaUpdate.arena.state.get(me);
+
+    for(PlayerState playerState : arenaUpdate.arena.state.values()) {
+      if (playerState.x == mystate.x && playerState.y == mystate.y) {
+        //this is me
+        continue;
+      }
+
+      if (mystate.inRange(playerState)) {
+        return "T";
+      } else {
+        int minDist = 999;
+        PlayerState close = null;
+        for(PlayerState playerState2 : arenaUpdate.arena.state.values()) {
+          if (playerState.x == mystate.x && playerState.y == mystate.y) {
+            //this is me
+            continue;
+          }
+
+          if (playerState2.distance(mystate) < minDist) {
+            minDist = playerState2.distance(mystate);
+            close = playerState2;
+          }
+        }
+
+        if (close != null)
+          return mystate.chase(close);
+      }
+    }
 
     //JSONObject meJson = jsonObject.getJSONObject(me);
 /*
