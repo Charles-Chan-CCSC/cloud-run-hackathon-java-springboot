@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 @SpringBootApplication
 @RestController
@@ -48,6 +49,31 @@ public class Application {
     public Integer getScore() {return score;}
 
     public void setScore(Integer score) {this.score = score;}
+/*
+    public boolean inRange(PlayerState p) {
+      if (self.direction.equals("N")) {
+        if (p.y >= self.y-3 && p.y < self.y && p.x == self.x)
+               return true;
+      } else if (self.direction.equals("S")) {
+        if (p.y <= self.y+3 && p.y > self.y && p.x == self.x)
+          return true;
+      } else if (self.direction.equals("E")) {
+        if (p.x <= self.x+3 && p.x > self.x && p.y == self.y)
+          return true;
+      } else {
+        if (p.x >= self.x -3 && p.x < self.x && p.y == self.y)
+          return true;
+      }
+      return false;
+    }
+
+    public int distance(PlayerState p) {
+      int dist =  Math.abs(p.x - self.x) + Math.abs(p.y - self.y);
+      if (!((p.x == self.x) || (p.y == self.y)))
+        dist += 1;
+      return dist;
+    }
+    */
   }
 
   static class Arena {
@@ -104,7 +130,7 @@ public class Application {
     System.out.println(jsonObject.getJSONArray("argv"));
 */
 
-    JSONObject jsonObject = new JSONObject(arenaUpdate.toString());
+    JSONObject jsonObject = new JSONObject(arenaUpdate);
 
     JSONObject arena = jsonObject.getJSONObject("arena");
     System.out.println(arena.toString());
@@ -113,6 +139,9 @@ public class Application {
     System.out.println(state.toString());
 
     String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app";
+    Set<String> playerName = arenaUpdate.arena.state.keySet();
+    System.out.println("playername = " + java.util.Arrays.toString(playerName.toArray()));
+
     JSONObject meJson = jsonObject.getJSONObject(me);
     int myX = meJson.getInt("x");
     int myY = meJson.getInt("y");
