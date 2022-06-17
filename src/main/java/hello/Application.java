@@ -173,7 +173,7 @@ public class Application {
 */
 
 
-    String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app/";
+    String me = "https://cloud-run-hackathon-java-springboot-ksvehvegcq-uc.a.run.app";
     Set<String> playerName = arenaUpdate.arena.state.keySet();
     System.out.println("playername = " + java.util.Arrays.toString(playerName.toArray()));
 
